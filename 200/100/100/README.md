@@ -40,4 +40,6 @@ FROM centos:centos7
 ```
 dockerfile
 
+*** WE ARE HERE ***
+
 
