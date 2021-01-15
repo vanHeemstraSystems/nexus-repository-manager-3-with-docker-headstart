@@ -1,6 +1,6 @@
 # 100 Installing, Starting, and Shutting Down Nexus Repository
 
-## 000 Prerequiaites
+## 000 Prerequisites
 
 - Docker is installed, see https://github.com/vanHeemstraSystems/docker-quick-start-headstart
 
