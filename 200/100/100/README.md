@@ -15,3 +15,29 @@ REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
 
 You see that we currently have no images available.
 
+What we're gonna do is we're gonna create our own image.
+
+We'll go ahead and create a working directory. 
+
+```
+$ cd ~
+$ mkdir nrm3docker
+```
+
+I'll go ahead and CD into that directory and I'll create my Docker file.
+
+```
+$ cd onboarding
+$ vim dockerfile
+```
+
+Now, you don't actually have to use the term Docker file because you can specify what file you're gonna use. However, by default, it looks for that Docker file. 
+
+So the first line is gonna be that from command. Where are or what are we? What are we basing this image on?
+
+```
+FROM centos:centos7
+```
+dockerfile
+
+
