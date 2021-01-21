@@ -17,7 +17,7 @@ You see that we currently have no images available.
 
 What we're gonna do is we're gonna create our own image.
 
-We'll go ahead and create a working directory. 
+We'll go ahead and create a working directory (here named: nrm3docker for Nexus repository Manager version 3 with Docker). 
 
 ```
 $ cd ~
@@ -27,7 +27,7 @@ $ mkdir nrm3docker
 I'll go ahead and CD into that directory and I'll create my Docker file.
 
 ```
-$ cd onboarding
+$ cd nrm3docker
 $ vim dockerfile
 ```
 
