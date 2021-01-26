@@ -50,6 +50,14 @@ Then we'll go ahead and do an update and will install Python three.
 
 vanheemstrasystems/nrm3
 
+Update the Docker file for the above.
+
+```
+FROM centos:centos7
+RUN yum check-update
+```
+dockerfile
+
 *** WE ARE HERE ***
 
 
