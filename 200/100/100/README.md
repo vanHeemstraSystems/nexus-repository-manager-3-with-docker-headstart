@@ -69,6 +69,20 @@ LABEL maintainer="willem@vanheemstrasystems.com"
 ```
 dockerfile
 
+Then we can use the command docker build.
+
+```
+$ docker build dockerfile
+```
+
+Be building the image and I could give it the name of the file on many years or more commonly, you'll see a dot that means build using the docker filed that is in this current directory.
+
+```
+$ docker build .
+```
+
+So we see our build context, which is what we wrote in that file being sent to the Docker daemon.
+
 *** WE ARE HERE ***
 
 
