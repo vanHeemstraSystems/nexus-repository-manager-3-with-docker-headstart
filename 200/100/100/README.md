@@ -44,17 +44,19 @@ Then we'll go ahead and do an update and will install Python three.
 
 | | NRM3 | |
 | -- | -- | -- |
-| | yum install python3 | |
-| | yum check-update | |
+| | yum -y install python3 | |
+| | yum -y update | |
 | | Base image: CentOS 7 | |
 
 vanheemstrasystems/nrm3
+
+Use Best Practices as can be found at https://beenje.github.io/blog/posts/dockerfile-anti-patterns-and-best-practices/
 
 Update the Docker file for the above. Add that -y flag in so that we're not prompted to accept the installation of Python 3.
 
 ```
 FROM centos:centos7
-RUN yum check-update
+RUN yum -y update
 RUN yum -y install python3
 ```
 dockerfile
@@ -63,7 +65,7 @@ We want to have that maintainer status, so simply go ahead and use label as your
 
 ```
 FROM centos:centos7
-RUN yum check-update
+RUN yum -y update
 RUN yum -y install python3
 LABEL maintainer="willem@vanheemstrasystems.com"
 ```
