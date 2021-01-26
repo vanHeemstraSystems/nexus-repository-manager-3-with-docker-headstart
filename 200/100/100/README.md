@@ -342,7 +342,14 @@ Removing intermediate container 5be03012c3ac
 Successfully built cd240ae8c10c
 ```
 
+Check the status of the docker images.
+
+```
+$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED              SIZE
+<none>        <none>    cd240ae8c10c   About a minute ago   444MB
+centos        centos7   8652b9f0cb4c   2 months ago         204MB
+hello-world   latest    bf756fb1ae65   12 months ago        13.3kB
+```
 
 *** WE ARE HERE ***
-
-
