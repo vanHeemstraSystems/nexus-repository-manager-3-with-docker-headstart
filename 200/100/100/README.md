@@ -59,6 +59,16 @@ RUN yum -y install python3
 ```
 dockerfile
 
+We want to have that maintainer status, so simply go ahead and use label as your instruction.
+
+```
+FROM centos:centos7
+RUN yum check-update
+RUN yum -y install python3
+LABEL maintainer="willem@vanheemstrasystems.com"
+```
+dockerfile
+
 *** WE ARE HERE ***
 
 
