@@ -44,8 +44,8 @@ Then we'll go ahead and do an update and will install Python three.
 
 | | NRM3 | |
 | -- | -- | -- |
-| | apt-get install python3 | |
-| | apt-get update | |
+| | yum install python3 | |
+| | yum check-update | |
 | | Base image: CentOS 7 | |
 
 vanheemstrasystems/nrm3
