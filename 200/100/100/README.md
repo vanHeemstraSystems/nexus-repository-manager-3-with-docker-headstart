@@ -50,12 +50,12 @@ Then we'll go ahead and do an update and will install Python three.
 
 vanheemstrasystems/nrm3
 
-Update the Docker file for the above.
+Update the Docker file for the above. Add that -y flag in so that we're not prompted to accept the installation of Python 3.
 
 ```
 FROM centos:centos7
 RUN yum check-update
-RUN yum install python3
+RUN yum -y install python3
 ```
 dockerfile
 
