@@ -55,6 +55,7 @@ Update the Docker file for the above.
 ```
 FROM centos:centos7
 RUN yum check-update
+RUN yum install python3
 ```
 dockerfile
 
