@@ -102,7 +102,76 @@ So we see our build context, which is what we wrote in that file being sent to t
 
 Outcome of above build command:
 
+```
+Sending build context to Docker daemon  200.2kB
+Step 1/3 : FROM registry.access.redhat.com/ubi8/ubi-init
+latest: Pulling from ubi8/ubi-init
+d9e72d058dc5: Pull complete 
+cca21acb641a: Pull complete 
+8d11216d378e: Pull complete 
+Digest: sha256:c6d1e50ab1166beae21a334156091024aa9123059047bb7b51248a10d5168719
+Status: Downloaded newer image for registry.access.redhat.com/ubi8/ubi-init:latest
+ ---> 465c12d943fa
+Step 2/3 : RUN yum -y update
+ ---> Running in f55092d3d568
+Updating Subscription Management repositories.
+Unable to read consumer identity
 
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+
+Red Hat Universal Base Image 8 (RPMs) - BaseOS  4.1 MB/s | 773 kB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - AppStre  21 MB/s | 4.9 MB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - CodeRea 116 kB/s |  13 kB     00:00    
+Dependencies resolved.
+================================================================================
+ Package        Architecture   Version               Repository            Size
+================================================================================
+Upgrading:
+ tzdata         noarch         2021a-1.el8           ubi-8-baseos         473 k
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total download size: 473 k
+Downloading Packages:
+tzdata-2021a-1.el8.noarch.rpm                   4.3 MB/s | 473 kB     00:00    
+--------------------------------------------------------------------------------
+Total                                           4.2 MB/s | 473 kB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Upgrading        : tzdata-2021a-1.el8.noarch                              1/2 
+  Cleanup          : tzdata-2020d-1.el8.noarch                              2/2 
+  Verifying        : tzdata-2021a-1.el8.noarch                              1/2 
+  Verifying        : tzdata-2020d-1.el8.noarch                              2/2 
+Installed products updated.
+
+Upgraded:
+  tzdata-2021a-1.el8.noarch                                                     
+
+Complete!
+Removing intermediate container f55092d3d568
+ ---> a66e6c6dfa6e
+Step 3/3 : LABEL maintainer="willem@vanheemstrasystems.com"
+ ---> Running in fc32160def54
+Removing intermediate container fc32160def54
+ ---> ef6932d2f517
+Successfully built ef6932d2f517
+```
+
+Check the status of the docker images.
+
+```
+$ docker images
+REPOSITORY                                 TAG       IMAGE ID       CREATED              SIZE
+<none>                                     <none>    ef6932d2f517   About a minute ago   245MB
+registry.access.redhat.com/ubi8/ubi-init   latest    465c12d943fa   6 weeks ago          216MB
+hello-world                                latest    bf756fb1ae65   13 months ago        13.3kB
+```
 
 
 *** WE ARE HERE ***
