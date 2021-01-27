@@ -43,6 +43,8 @@ As we won't be distributing publicly we are not blocked by this limitation.
 
 Red Hat Universal Base Images (UBI)  provide the same quality trusted foundation for building container images as their non-UBI predecessors (rhel6, rhel7, rhel-init, and rhel-minimal base images), but offer more freedom in how they are used and distributed. (source: https://redhat-connect.gitbook.io/partner-guide-for-red-hat-openshift-and-container/program-on-boarding/containers-with-red-hat-universal-base-image-ubi)
 
+See for how the Dockerfile needs to be configured to have your UBI based container image build and pass container certification successfully, https://github.com/RHC4TP/starter/tree/master/Container%20Zone .
+
 So the first line is gonna be that from command. Where are or what are we? What are we basing this image on?
 
 We are going to use the following base image (see also https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image):
