@@ -43,12 +43,13 @@ As we won't be distributing publicly we are not blocked by this limitation.
 
 So the first line is gonna be that from command. Where are or what are we? What are we basing this image on?
 
-We are going to use the following base image:
+We are going to use the following base image (see also https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image):
 
 UBI Init (systemd) registry.access.redhat.com/ubi8/ubi-init
 
 ```
-FROM centos:centos7
+# UBI 8 Init (systemd) image
+FROM registry.access.redhat.com/ubi8/ubi-init
 ```
 dockerfile
 
