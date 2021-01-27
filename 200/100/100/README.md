@@ -6,6 +6,8 @@
 
 ## 100 Installing Docker Image of Nexus
 
+Reference: https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?tag=3.21.2-ubi-2&push_date=1585005110000&container-tabs=overview
+
 So in order to see if we have any images there, we can use the command docker images.
 
 ```
