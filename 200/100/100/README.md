@@ -54,6 +54,12 @@ If you do not have a Red Hat account, you can get a free Red Hat account by sign
 
 - [Red Hat Developer Program](https://developers.redhat.com/): Signing up for a free developer account gives you access to developer tools and programs.
 
+Login with your Red Hat Developer account (here: username = wvanheemstra):
+
+```
+docker login registry.redhat.io
+```
+
 Use the following template for your dockerfile:
 
 ```
@@ -156,7 +162,7 @@ MAINTAINER NAME willem@vanheemstrasystems.com
 
 ### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
 LABEL name="Nexus Repository Manager 3" \
-      maintainer="info@sonatype.com" \
+      maintainer="willem@vanheemstrasystems.com" \
       vendor="SonaType" \
       version="3" \
       release="RELEASE NUMBER" \
