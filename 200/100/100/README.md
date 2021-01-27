@@ -37,6 +37,32 @@ Now, you don't actually have to use the term Docker file because you can specify
 
 The recently released Red Hat Universal Base Image (UBI) provides a freely redistributable subset of Red Hat Enterprise Linux (RHEL). The UBI will be the only available base image selection for RHEL 8, however there is also a version of UBI for RHEL 7, provided as an alternative to the pre-UBI image. See also https://redhat-connect.gitbook.io/best-practices-guide/base-image
 
+**WARNING**: All RHEL container images, including UBI-based images containing packages from RHEL repositories, are ***non-redistributable***. This means that they can't be hosted from third party or public container registries such as Docker Hub or Quay.io, or from a self-hosted registry. 
+
+As we won't be distributing publicly we are not blocked by this limitation.
+
+So the first line is gonna be that from command. Where are or what are we? What are we basing this image on?
+
+We are going to use the following base image:
+
+UBI Init (systemd) registry.access.redhat.com/ubi8/ubi-init
+
+```
+FROM centos:centos7
+```
+dockerfile
+
+Then we'll go ahead and do an update and will install Python three. 
+
+| | NRM3 | |
+| -- | -- | -- |
+| | yum -y install python3 | |
+| | yum -y update | |
+| | Base image: RHEL8 UBI Init | |
+
+vanheemstrasystems/nrm3
+
+
 
 *** WE ARE HERE ***
 
