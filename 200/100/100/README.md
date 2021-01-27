@@ -114,7 +114,7 @@ FROM registry.access.redhat.com/ubi8/ubi-init
 
 ### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
 LABEL name="Nexus Repository Manager 3" \
-      maintainer="info@sonatype.com" \
+      maintainer="willem@vanheemstrasystems.com" \
       vendor="SonaType" \
       version="3" \
       release="RELEASE NUMBER" \
