@@ -45,6 +45,48 @@ Red Hat Universal Base Images (UBI)  provide the same quality trusted foundation
 
 See for how the Dockerfile needs to be configured to have your UBI based container image build and pass container certification successfully, https://github.com/RHC4TP/starter/tree/master/Container%20Zone .
 
+
+**Register with RedHat**
+
+Red Hat distributed container images are moving from registry.access.redhat.com to registry.redhat.io. The new registry access model requires you to have a Red Hat login. If you are a customer with entitlements to Red Hat products, you already have an account. This is the same type of account you use to log into the Red Hat Customer Portal (access.redhat.com) and manage your Red Hat subscriptions.
+
+If you do not have a Red Hat account, you can get a free Red Hat account by signing up for one of the following:
+
+- [Red Hat Developer Program](https://developers.redhat.com/): Signing up for a free developer account gives you access to developer tools and programs.
+
+Use the following template for your dockerfile:
+
+```
+## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
+
+FROM registry.redhat.io/rhel7
+MAINTAINER NAME <EMAIL@ADDRESS>
+
+### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
+LABEL name="APPLICATION NAME" \
+      maintainer="EMAIL@ADDRESS" \
+      vendor="COMPANY NAME" \
+      version="VERSION NUMBER" \
+      release="RELEASE NUMBER" \
+      summary="APPLICATION SUMMARY" \
+      description="APPLICATION DESCRIPTION" \
+
+### add licenses to this directory
+COPY licenses /licenses
+
+### Add necessary Red Hat repos here
+RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms \
+
+### Add your package needs here
+    INSTALL_PKGS="PACKAGES HERE" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
+      --security --sec-severity=Important --sec-severity=Critical && \
+    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+
+### Install your application here -- add all other necessary items to build your image
+RUN "ANY OTHER INSTRUCTIONS HERE"
+```
+
 So the first line is gonna be that from command. Where are or what are we? What are we basing this image on?
 
 We are going to use the following base image (see also https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image):
@@ -52,8 +94,25 @@ We are going to use the following base image (see also https://www.redhat.com/en
 UBI Init (systemd) registry.access.redhat.com/ubi8/ubi-init
 
 ```
-# UBI 8 Init (systemd) image
+## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
+
+### UBI 8 Init (systemd) image
 FROM registry.access.redhat.com/ubi8/ubi-init
+
+### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
+LABEL name="Nexus Repository Manager 3" \
+      maintainer="info@sonatype.com" \
+      vendor="SonaType" \
+      version="3" \
+      release="RELEASE NUMBER" \
+      summary="Nexus Repository Manager version 3" \
+      description="SonaType Nexus Repository Manager" \
+
+### add licenses to this directory
+COPY licenses /licenses
+
+### Add necessary Red Hat repos here
+RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 ```
 dockerfile
 
@@ -71,22 +130,46 @@ Use Best Practices as can be found at https://beenje.github.io/blog/posts/docker
 Update the Docker file for the above. Add that -y flag in so that we're not prompted to accept the update.
 
 ```
-# UBI 8 Init (systemd) image
+## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
+
+### UBI 8 Init (systemd) image
 FROM registry.access.redhat.com/ubi8/ubi-init
 
-RUN yum -y update
+### add licenses to this directory
+COPY licenses /licenses
+
+### Add necessary Red Hat repos here
+RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
+
+### PUT THE UPDATE INSTRUCTIONS HERE
 ```
 dockerfile
 
 We want to have that maintainer status, so simply go ahead and use label as your instruction.
 
 ```
-# UBI 8 Init (systemd) image
+## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
+
+### UBI 8 Init (systemd) image
 FROM registry.access.redhat.com/ubi8/ubi-init
+MAINTAINER NAME willem@vanheemstrasystems.com
 
-RUN yum -y update
+### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
+LABEL name="Nexus Repository Manager 3" \
+      maintainer="info@sonatype.com" \
+      vendor="SonaType" \
+      version="3" \
+      release="RELEASE NUMBER" \
+      summary="Nexus Repository Manager version 3" \
+      description="SonaType Nexus Repository Manager" \
 
-LABEL maintainer="willem@vanheemstrasystems.com"
+### add licenses to this directory
+COPY licenses /licenses
+
+### Add necessary Red Hat repos here
+RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
+
+### PUT THE UPDATE INSTRUCTIONS HERE
 ```
 dockerfile
 
