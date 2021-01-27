@@ -91,10 +91,10 @@ COPY licenses /licenses
 RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms \
 
 ### Add your package needs here
-    INSTALL_PKGS="PACKAGES HERE" && \
-    yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
-      --security --sec-severity=Important --sec-severity=Critical && \
-    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+INSTALL_PKGS="PACKAGES HERE" && \
+yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
+  --security --sec-severity=Important --sec-severity=Critical && \
+yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 
 ### Install your application here -- add all other necessary items to build your image
 RUN "ANY OTHER INSTRUCTIONS HERE"
@@ -155,10 +155,10 @@ COPY licenses /licenses
 RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
 ### Add your package needs here
-    INSTALL_PKGS="" && \
-    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
-      --security --sec-severity=Important --sec-severity=Critical && \
-    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+INSTALL_PKGS="" && \
+yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+  --security --sec-severity=Important --sec-severity=Critical && \
+yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
 dockerfile
 
@@ -187,10 +187,10 @@ COPY licenses /licenses
 RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
 ### Add your package needs here
-    INSTALL_PKGS="" && \
-    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
-      --security --sec-severity=Important --sec-severity=Critical && \
-    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+INSTALL_PKGS="" && \
+yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+  --security --sec-severity=Important --sec-severity=Critical && \
+yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
 dockerfile
 
