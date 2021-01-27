@@ -67,12 +67,14 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ```
 
-Use the following template for your dockerfile:
+Use the following template for your dockerfile (source: https://github.com/RHC4TP/starter/tree/master/Container%20Zone/Templates):
 
 ```
+## <SHORT TITLE OF CONTAINER>
 ## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
 
-FROM registry.redhat.io/rhel7
+## Using UBI 8 Init (systemd) base image and Nexus Repository Manager 
+FROM registry.redhat.io/ubi8/ubi-init
 MAINTAINER NAME <EMAIL@ADDRESS>
 
 ### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
@@ -88,13 +90,13 @@ LABEL name="APPLICATION NAME" \
 COPY licenses /licenses
 
 ### Add necessary Red Hat repos here
-RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms \
+RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
 ### Add your package needs here
-INSTALL_PKGS="PACKAGES HERE" && \
-yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
-  --security --sec-severity=Important --sec-severity=Critical && \
-yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+    INSTALL_PKGS="PACKAGES HERE" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+      --security --sec-severity=Important --sec-severity=Critical && \
+    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 
 ### Install your application here -- add all other necessary items to build your image
 RUN "ANY OTHER INSTRUCTIONS HERE"
@@ -107,18 +109,19 @@ We are going to use the following base image (see also https://www.redhat.com/en
 UBI Init (systemd) registry.access.redhat.com/ubi8/ubi-init
 
 ```
+## Repository Manager container
 ## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
 
-### UBI 8 Init (systemd) image
-FROM registry.access.redhat.com/ubi8/ubi-init
+### Using UBI 8 Init (systemd) base image and Nexus Repository Manager
+FROM registry.redhat.io/ubi8/ubi-init
 
 ### Required Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
 LABEL name="Nexus Repository Manager 3" \
       maintainer="willem@vanheemstrasystems.com" \
       vendor="SonaType" \
-      version="3" \
-      release="RELEASE NUMBER" \
-      summary="Nexus Repository Manager version 3" \
+      version="3.21.2" \
+      release="3" \
+      summary="Nexus Repository Manager version 3.21.2" \
       description="SonaType Nexus Repository Manager" \
 
 ### add licenses to this directory
@@ -129,11 +132,12 @@ RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 ```
 dockerfile
 
-Then we'll go ahead and do an update. 
+Then we'll go ahead to install nexus repository manager and do an update. 
 
 | | NRM3 | |
 | -- | -- | -- |
 | | yum -y update | |
+| | yum -y install nrm3  | |
 | | Base image: RHEL8 UBI Init | |
 
 vanheemstrasystems/nrm3
@@ -143,10 +147,11 @@ Use Best Practices as can be found at https://beenje.github.io/blog/posts/docker
 Update the Docker file for the above. Add that -y flag in so that we're not prompted to accept the update.
 
 ```
+## Repository Manager container
 ## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
 
-### UBI 8 Init (systemd) image
-FROM registry.access.redhat.com/ubi8/ubi-init
+### Using UBI 8 Init (systemd) base image and Nexus Repository Manager
+FROM registry.redhat.io/ubi8/ubi-init
 
 ### add licenses to this directory
 COPY licenses /licenses
@@ -155,16 +160,17 @@ COPY licenses /licenses
 RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
 ### Add your package needs here
-INSTALL_PKGS="" && \
-yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
-  --security --sec-severity=Important --sec-severity=Critical && \
-yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+    INSTALL_PKGS="" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+      --security --sec-severity=Important --sec-severity=Critical && \
+    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
 dockerfile
 
 We want to have that maintainer status, so simply go ahead and use label as your instruction.
 
 ```
+## Repository Manager container
 ## Note: Pulling container will require logging into Red Hat's registry using `docker login registry.redhat.io` .
 
 ### UBI 8 Init (systemd) image
@@ -175,9 +181,9 @@ MAINTAINER NAME willem@vanheemstrasystems.com
 LABEL name="Nexus Repository Manager 3" \
       maintainer="willem@vanheemstrasystems.com" \
       vendor="SonaType" \
-      version="3" \
-      release="RELEASE NUMBER" \
-      summary="Nexus Repository Manager version 3" \
+      version="3.21.2" \
+      release="3" \
+      summary="Nexus Repository Manager version 3.21.2" \
       description="SonaType Nexus Repository Manager" \
 
 ### add licenses to this directory
@@ -187,10 +193,10 @@ COPY licenses /licenses
 RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
 ### Add your package needs here
-INSTALL_PKGS="" && \
-yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
-  --security --sec-severity=Important --sec-severity=Critical && \
-yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
+    INSTALL_PKGS="" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+      --security --sec-severity=Important --sec-severity=Critical && \
+    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
 dockerfile
 
