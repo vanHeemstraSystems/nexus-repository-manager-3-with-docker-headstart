@@ -154,7 +154,11 @@ COPY licenses /licenses
 ### Add necessary Red Hat repos here
 RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
-### PUT THE UPDATE INSTRUCTIONS HERE
+### Add your package needs here
+    INSTALL_PKGS="" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+      --security --sec-severity=Important --sec-severity=Critical && \
+    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
 dockerfile
 
@@ -182,7 +186,11 @@ COPY licenses /licenses
 ### Add necessary Red Hat repos here
 RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
 
-### PUT THE UPDATE INSTRUCTIONS HERE
+### Add your package needs here
+    INSTALL_PKGS="" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+      --security --sec-severity=Important --sec-severity=Critical && \
+    yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
 dockerfile
 
