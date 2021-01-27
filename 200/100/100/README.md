@@ -54,7 +54,7 @@ If you do not have a Red Hat account, you can get a free Red Hat account by sign
 
 - [Red Hat Developer Program](https://developers.redhat.com/): Signing up for a free developer account gives you access to developer tools and programs.
 
-Login with your Red Hat Developer account (here: username = wvanheemstra):
+Login with your Red Hat Developer account (here: Red Hat Login ID = wvanheemstra@icloud.com):
 
 ```
 docker login registry.redhat.io
