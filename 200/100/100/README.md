@@ -53,15 +53,55 @@ FROM registry.access.redhat.com/ubi8/ubi-init
 ```
 dockerfile
 
-Then we'll go ahead and do an update and will install Python three. 
+Then we'll go ahead and do an update. 
 
 | | NRM3 | |
 | -- | -- | -- |
-| | yum -y install python3 | |
 | | yum -y update | |
 | | Base image: RHEL8 UBI Init | |
 
 vanheemstrasystems/nrm3
+
+Use Best Practices as can be found at https://beenje.github.io/blog/posts/dockerfile-anti-patterns-and-best-practices/
+
+Update the Docker file for the above. Add that -y flag in so that we're not prompted to accept the update.
+
+```
+# UBI 8 Init (systemd) image
+FROM registry.access.redhat.com/ubi8/ubi-init
+
+RUN yum -y update
+```
+dockerfile
+
+We want to have that maintainer status, so simply go ahead and use label as your instruction.
+
+```
+# UBI 8 Init (systemd) image
+FROM registry.access.redhat.com/ubi8/ubi-init
+
+RUN yum -y update
+
+LABEL maintainer="willem@vanheemstrasystems.com"
+```
+dockerfile
+
+Then we can use the command docker build.
+
+```
+$ docker build dockerfile
+```
+
+Be building the image and I could give it the name of the file on many years or more commonly, you'll see a dot that means build using the docker filed that is in this current directory.
+
+```
+$ docker build .
+```
+
+So we see our build context, which is what we wrote in that file being sent to the Docker daemon.
+
+Outcome of above build command:
+
 
 
 
