@@ -33,6 +33,20 @@ $ vim dockerfile
 
 Now, you don't actually have to use the term Docker file because you can specify what file you're gonna use. However, by default, it looks for that Docker file. 
 
+**Red Hat Universal Base Image (UBI)**
+
+The recently released Red Hat Universal Base Image (UBI) provides a freely redistributable subset of Red Hat Enterprise Linux (RHEL). The UBI will be the only available base image selection for RHEL 8, however there is also a version of UBI for RHEL 7, provided as an alternative to the pre-UBI image. See also https://redhat-connect.gitbook.io/best-practices-guide/base-image
+
+
+*** WE ARE HERE ***
+
+
+
+
+
+
+
+
 So the first line is gonna be that from command. Where are or what are we? What are we basing this image on?
 
 ```
