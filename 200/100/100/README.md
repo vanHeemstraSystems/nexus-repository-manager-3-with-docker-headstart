@@ -57,7 +57,14 @@ If you do not have a Red Hat account, you can get a free Red Hat account by sign
 Login with your Red Hat Developer account (here: Red Hat Login ID = wvanheemstra@icloud.com):
 
 ```
-docker login registry.redhat.io
+$ docker login registry.redhat.io
+Username: wvanheemstra@icloud.com
+Password: 
+WARNING! Your password will be stored unencrypted in /home/cloud_user/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
 ```
 
 Use the following template for your dockerfile:
