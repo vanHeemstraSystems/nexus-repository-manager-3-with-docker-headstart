@@ -67,7 +67,7 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ```
 
-Use the following template for your dockerfile (source: https://github.com/RHC4TP/starter/tree/master/Container%20Zone/Templates):
+Use the following template for your dockerfile (source: https://github.com/RHC4TP/starter/tree/master/Container%20Zone/UBI-Template/):
 
 ```
 ## <SHORT TITLE OF CONTAINER>
@@ -90,11 +90,12 @@ LABEL name="APPLICATION NAME" \
 COPY licenses /licenses
 
 ### Add necessary Red Hat repos here
-RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
+## Note: The UBI has different repos than the RHEL repos.
+RUN REPOLIST=ubi-8,ubi-8-optional \
 
 ### Add your package needs here
     INSTALL_PKGS="PACKAGES HERE" && \
-    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+    yum -y update-minimal --disablerepo "*" --enablerepo ubi-8 --setopt=tsflags=nodocs \
       --security --sec-severity=Important --sec-severity=Critical && \
     yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 
@@ -128,7 +129,8 @@ LABEL name="Nexus Repository Manager 3" \
 COPY licenses /licenses
 
 ### Add necessary Red Hat repos here
-RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
+## Note: The UBI has different repos than the RHEL repos.
+RUN REPOLIST=ubi-8,ubi-8-optional \
 ```
 dockerfile
 
@@ -157,11 +159,12 @@ FROM registry.redhat.io/ubi8/ubi-init
 COPY licenses /licenses
 
 ### Add necessary Red Hat repos here
-RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
+## Note: The UBI has different repos than the RHEL repos.
+RUN REPOLIST=ubi-8,ubi-8-optional \
 
 ### Add your package needs here
-    INSTALL_PKGS="" && \
-    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+    INSTALL_PKGS="PACKAGES HERE" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo ubi-8 --setopt=tsflags=nodocs \
       --security --sec-severity=Important --sec-severity=Critical && \
     yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
@@ -190,11 +193,12 @@ LABEL name="Nexus Repository Manager 3" \
 COPY licenses /licenses
 
 ### Add necessary Red Hat repos here
-RUN REPOLIST=rhel-8-server-rpms,rhel-8-server-optional-rpms \
+## Note: The UBI has different repos than the RHEL repos.
+RUN REPOLIST=ubi-8,ubi-8-optional \
 
 ### Add your package needs here
-    INSTALL_PKGS="" && \
-    yum -y update-minimal --disablerepo "*" --enablerepo rhel-8-server-rpms --setopt=tsflags=nodocs \
+    INSTALL_PKGS="PACKAGES HERE" && \
+    yum -y update-minimal --disablerepo "*" --enablerepo ubi-8 --setopt=tsflags=nodocs \
       --security --sec-severity=Important --sec-severity=Critical && \
     yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 ```
