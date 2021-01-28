@@ -8,6 +8,8 @@
 
 Reference: https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?tag=3.21.2-ubi-2&push_date=1585005110000&container-tabs=overview
 
+Partially based on "Deploy Sonatype Nexus Repository OSS v3 with Docker & Traefik v2" at https://medium.com/faun/deploy-sonatype-nexus-repository-oss-v3-with-docker-a50225fe661e
+
 So in order to see if we have any images there, we can use the command docker images.
 
 ```
