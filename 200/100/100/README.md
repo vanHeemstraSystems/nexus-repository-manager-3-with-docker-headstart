@@ -19,17 +19,17 @@ You see that we currently have no images available.
 
 What we're gonna do is we're gonna create our own image.
 
-We'll go ahead and create a working directory (here named: nrm3docker for Nexus repository Manager version 3 with Docker). 
+We'll go ahead and create a working directory (here named: nxrm3docker for Nexus repository Manager version 3 with Docker). 
 
 ```
 $ cd ~
-$ mkdir nrm3docker
+$ mkdir nxrm3docker
 ```
 
 I'll go ahead and CD into that directory and I'll create my Docker file.
 
 ```
-$ cd nrm3docker
+$ cd nxrm3docker
 $ vim dockerfile
 ```
 
@@ -138,13 +138,13 @@ dockerfile
 
 Then we'll go ahead to install nexus repository manager and do an update. 
 
-| | NRM3 | |
+| | NXRM3 | |
 | -- | -- | -- |
 | | yum -y update | |
-| | yum -y install nrm3  | |
+| | yum -y install nxrm3  | |
 | | Base image: RHEL8 UBI Init | |
 
-vanheemstrasystems/nrm3
+vanheemstrasystems/nxrm3
 
 Use Best Practices as can be found at https://beenje.github.io/blog/posts/dockerfile-anti-patterns-and-best-practices/
 
@@ -312,7 +312,7 @@ dockerfile
 
 Then we'll go ahead and do an update and will install Python three. 
 
-| | NRM3 | |
+| | NXRM3 | |
 | -- | -- | -- |
 | | yum -y install python3 | |
 | | yum -y update | |
