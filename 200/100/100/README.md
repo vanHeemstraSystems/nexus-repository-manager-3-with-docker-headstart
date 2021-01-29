@@ -3,6 +3,7 @@
 ## 000 Prerequisites
 
 - Docker is installed, see https://github.com/vanHeemstraSystems/docker-quick-start-headstart
+- Docker Compose is installed, see 
 
 ## 100 Installing Docker Image of Nexus
 
