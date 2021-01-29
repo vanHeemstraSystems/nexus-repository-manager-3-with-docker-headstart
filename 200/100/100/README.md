@@ -4,6 +4,7 @@
 
 - Docker Engine is installed, see https://github.com/vanHeemstraSystems/docker-quick-start-headstart
 - Docker Compose is installed, see https://github.com/vanHeemstraSystems/docker-compose-quick-start-headstart
+- See also https://github.com/vanHeemstraSystems/docker-app-development-workflow-headstart
 
 ## 100 Installing Docker Image of Nexus
 
